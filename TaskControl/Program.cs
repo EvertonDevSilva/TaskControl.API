@@ -1,4 +1,7 @@
 
+using TaskControl.Context;
+using TaskControl.Data;
+
 namespace TaskControl
 {
     public class Program
@@ -13,6 +16,9 @@ namespace TaskControl
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+            builder.Services.AddDbContext<AppDbContext>();
 
             var app = builder.Build();
 
